@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TODO APP</title>
+</head>
+<body>
+    <header>
+        <div class="heading">
+            <h1>TODO App</h1>
+        </div>
+    </header>
+
+    <main>
+        <form action="/add-to-list" method="post">
+            <div id="description-box">
+                <p>Description</p>
+                <input type="text" name="description" id="description" placeholder="What do you need to do? " required>
+            </div>
+            <div class="category-data-container">
+                <div id="category-box">
+                    <p>Category</p>
+                    <select name="category" id="category">
+                        <option value="" disabled selected>Choose a category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div id="date-box">
+                    <p>Due Date</p>
+                    <input type="date" name="date" id="date">
+                </div>
+            </div>
+            <div id="btn-box">
+                <input type="submit" value="+ ADD TASK">
+            </div>
+        </form>
+
+    </main>
+    
+</body>
+</html>

@@ -15,7 +15,7 @@
     </header>
 
     <main>
-        <form action="/add-to-list" method="post">
+        <form action="/create-todo-list" method="post" style="display: inline;">
             <div id="description-box">
                 <p>Description</p>
                 <input type="text" name="description" id="description" placeholder="What do you need to do? " required>
@@ -37,11 +37,25 @@
                     <input type="date" name="date" id="date">
                 </div>
             </div>
-            <div id="btn-box">
-                <input type="submit" value="+ ADD TASK">
+            <input type="submit" value=" + ADD TASK">
+        </form>
+            
+        <form action="/delete-from-list" method="post" style="display: inline;">
+            <input type="submit" value="DELETE TASK">
+            <div id="todo-checklist-box">
+                <ul>
+                    <% for (let detail of details) { %>
+                        <li style="list-style: none;">
+                            <input type="checkbox" name="id" value="<%= detail._id%>" style="display: inline;">
+                                <p style="display: inline-block;"><%= detail.description %></p>
+                                <small><%= detail.category %></small>
+                                <small><%= detail.date %></small>
+                            </input>
+                        </li>
+                    <% } %>
+                </ul>
             </div>
         </form>
-
     </main>
     
 </body>

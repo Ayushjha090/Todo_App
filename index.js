@@ -3,6 +3,9 @@ const path = require('path');
 const port = 8000;
 
 const app = express();
+const db = require('./config/mongoose');
+const TODO = require('./model/todo');
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("assets"));
@@ -10,8 +13,6 @@ app.use(express.static("assets"));
 app.get('/', (req, res)=>{
     return res.render("home")
 });
-
-
 
 app.listen(port, (err)=>{
     if(err){

@@ -1,0 +1,48 @@
+.heading{
+    border-bottom: 1px solid #EFEFEF;
+}
+
+.heading h1{
+    font-size: 2.5rem;
+}
+
+/* CSS for border-bottom */
+#description-box{
+    border-bottom: 1px solid #EFEFEF;
+}
+
+.category-date-container{
+    border-bottom: 1px solid #EFEFEF;
+}
+
+#todo-checklist-box{
+    border-top: 1px solid #EFEFEF;
+}
+
+/* Media Query for Category box */
+@media only screen and (max-width: 370px){
+    #category-box{
+        display: none;
+    }
+}
+
+/* CSS Setting Backgroung Colors for different categories */
+#Personal{
+    background-color: rgb(104, 104, 235);
+}
+
+#Work{
+    background-color: rgb(250, 45, 45);
+}
+
+#College{
+    background-color: rgb(56, 34, 46);
+}
+
+#Cleaning{
+    background-color: aquamarine;
+}
+
+#Other{
+    background-color: grey;
+}

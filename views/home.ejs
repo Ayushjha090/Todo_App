@@ -4,59 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/########.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <title>TODO APP</title>
 </head>
-<body>
-    <header>
-        <div class="heading">
+<body class="bg-secondary">
+    <main class="container bg-white pb-3">
+        <header class="heading text-center align-middle py-1">
             <h1>TODO App</h1>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <form action="/create-todo-list" method="post" style="display: inline;">
-            <div id="description-box">
-                <p>Description</p>
-                <input type="text" name="description" id="description" placeholder="What do you need to do? " required>
-            </div>
-            <div class="category-data-container">
-                <div id="category-box">
-                    <p>Category</p>
-                    <select name="category" id="category">
-                        <option value="" disabled selected>Choose a category</option>
-                        <option value="personal">Personal</option>
-                        <option value="work">Work</option>
-                        <option value="school">School</option>
-                        <option value="cleaning">Cleaning</option>
-                        <option value="other">Other</option>
-                    </select>
+        <section>
+            <!-- Form For adding task to the list -->
+            <form action="/add-to-list" method="post">
+                <div id="description-box" class="mb-1 p-2">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" name="description" id="description" class="form-control mb-2" placeholder="What do you need to do? " required>
                 </div>
-                <div id="date-box">
-                    <p>Due Date</p>
-                    <input type="date" name="date" id="date">
+                <div class="category-date-container row g-3 p-2 mb-1 pb-3">
+                    <div id="category-box" class="col-md-6">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="category" id="category" class="form-select">
+                            <option value="" disabled selected>Choose a category</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="College">College</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div id="date-box" class="col-md-6">
+                        <label for="date" class="form-label">Due Date</label>
+                        <input class="form-control" type="date" name="date" id="date">
+                    </div>
                 </div>
-            </div>
-            <input type="submit" value=" + ADD TASK">
-        </form>
-            
-        <form action="/delete-from-list" method="post" style="display: inline;">
-            <input type="submit" value="DELETE TASK">
-            <div id="todo-checklist-box">
-                <ul>
-                    <% for (let detail of details) { %>
-                        <li style="list-style: none;">
-                            <input type="checkbox" name="id" value="<%= detail._id%>" style="display: inline;">
-                                <p style="display: inline-block;"><%= detail.description %></p>
-                                <small><%= detail.category %></small>
-                                <small><%= detail.date %></small>
-                            </input>
-                        </li>
-                    <% } %>
-                </ul>
-            </div>
-        </form>
+                <div class="btn-container d-flex justify-content-center mt-3 mb-1">
+                    <button type="submit" class="col-5 col-md-3 col-sm-4 btn btn-success">
+                        <i class="fa-solid fa-plus d-inline"></i>
+                        <p class="d-inline">ADD TASK</p>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Form for deleting tasks from the list -->
+            <form action="/delete-from-list" method="post">
+                <div class="btn-container d-flex justify-content-center mt-1 mb-3">
+                    <button type="submit" class="col-5 col-md-3 col-sm-4 btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                        <p class="d-inline">DELETE TASK</p>
+                    </button>
+                </div>
+                <div id="todo-checklist-box">
+                    <ul class="list-group list-group-flush p-2 mt-1">
+                        <% for (let detail of details) { %>
+                            <li class="list-group-item d-flex p-3 pe-4">
+                                <input class="form-check-input me-1" type="checkbox" name="id" value="<%= detail._id%>">
+                                <div class="ms-2 me-auto">
+                                    <div><%= detail.description %></div>
+                                    <% var date = detail.date %>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/833/833595.png" alt="" style="width: 20px;">
+                                    <%= date.toDateString() %>
+                                </div>
+                                <div id="category-box" class="col-4 col-md-2 p-2">
+                                    <span id="<%= detail.category %>" class="badge d-block p-3" style="font-size: 15px;"><%= detail.category %></span>
+                                </div>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </form>
+        </section>
     </main>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
